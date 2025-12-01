@@ -2,16 +2,17 @@ import pyodbc
 import csv
 import os
 
-# 1. Connect to SQL Server
+# 1. Connect to Azure SQL Database
 connection_string = (
     "DRIVER={ODBC Driver 17 for SQL Server};"
-    "SERVER=localhost;"
-    "DATABASE=TechStore;"
-    "Trusted_Connection=yes;"
-    "TrustServerCertificate=yes;"
+    "SERVER=tcp:techstore-server-sabelo.database.windows.net,1433;"  # Added ,1433;
+    "DATABASE=TechStore-DB;"
+    "UID=sqladmin;"
+    "PWD=#Ma'Sabza2003#;"
+    "Encrypt=yes;"
+    "TrustServerCertificate=no;"
+    "Connection Timeout=30;"
 )
-
-print("🔌 Connecting to database...")
 
 try:
     conn = pyodbc.connect(connection_string)
